@@ -9,7 +9,7 @@ const orderRouter = require('./routes/orderRouter');
 const app = express();
 
 //db connect 
-// console.log(process.env.MONGODB_URI );
+console.log(process.env.MONGODB_URI );
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://<username>:<password>@cluster0.urf42h2.mongodb.net/Ecommerce?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -62,7 +62,7 @@ if (process.env.NODE_ENV === 'production') {
 
 //error handling middleware
 app.use((err, req, res, next) => {
-    res.status(500).send({message: err.message});
+    res.status(402).send({message: err.message});
 });
 
 //server 

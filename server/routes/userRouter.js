@@ -19,6 +19,7 @@ userRouter.get('/seed', expressAsyncHandler(async (req, res) => {
 
 // /api/user/signin route 
 userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
+    console.log("User Email"+ req);
     const user = await User.findOne({ email: req.body.email});
     //check if there is user with given email
     console.log("User Email"+ user.email);
@@ -27,7 +28,7 @@ userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
         console.log("Inside User Email found"+ user.email);
         if(bcrypt.compareSync(req.body.password, user.password)) {
             res.send({
-                _id: string(user._id),
+                _id: user._id,
                 name: user.name,
                 email: user.email,
                 isAdmin: user.isAdmin,
@@ -58,7 +59,7 @@ userRouter.post('/register', expressAsyncHandler(async ({body}, res) => {
 
     // send user obj back
     res.send({
-        _id: string(createdUser._id),
+        _id: createdUser._id,
         name: createdUser.name,
         email: createdUser.email,
         isAdmin: createdUser.isAdmin,
@@ -85,7 +86,7 @@ userRouter.put('/profile', isAuth, expressAsyncHandler(async (req, res) => {
         const updatedUser = await user.save();
         //send the updated user info back to the front end 
         res.send({
-            _id: string(updatedUser._id),
+            _id: updatedUser._id,
             name: updatedUser.name,
             email: updatedUser.email,
             isAdmin: updatedUser.isAdmin,
