@@ -25,7 +25,7 @@ userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
         // use bcrypt to validate password
         if(bcrypt.compareSync(req.body.password, user.password)) {
             res.send({
-                _id: user._id,
+                _id: string(user._id),
                 name: user.name,
                 email: user.email,
                 isAdmin: user.isAdmin,
@@ -56,7 +56,7 @@ userRouter.post('/register', expressAsyncHandler(async ({body}, res) => {
 
     // send user obj back
     res.send({
-        _id: createdUser._id,
+        _id: string(createdUser._id),
         name: createdUser.name,
         email: createdUser.email,
         isAdmin: createdUser.isAdmin,
@@ -83,7 +83,7 @@ userRouter.put('/profile', isAuth, expressAsyncHandler(async (req, res) => {
         const updatedUser = await user.save();
         //send the updated user info back to the front end 
         res.send({
-            _id: updatedUser._id,
+            _id: string(updatedUser._id),
             name: updatedUser.name,
             email: updatedUser.email,
             isAdmin: updatedUser.isAdmin,
