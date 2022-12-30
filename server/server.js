@@ -1,6 +1,7 @@
 require('dotenv').config({ path: __dirname + '/.env' });
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const userRouter = require('./routes/userRouter');
 const productRouter = require('./routes/productRouter');
@@ -16,6 +17,26 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://<username>:<password>
 });
 
 const PORT = process.env.PORT || 8080;
+
+const allowedOrigins = [
+    'https://mernstackfrontendserver.onrender.com/',
+    'http://127.0.0.1:5500',
+    'http://localhost:3500',
+    'http://localhost:3000'
+];
+
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions));
 
 //use express middlewaree
 app.use(express.urlencoded({ extended: true }));
