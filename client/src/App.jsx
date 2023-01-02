@@ -13,9 +13,11 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import OrderHisotyScreen from './screens/OrderHisotyScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import { requestFirebaseNotificationPermission } from './messaging/firebaseinit'; 
 
 function App () {
     // get cart from redux store using useSelector
+    requestFirebaseNotificationPermission();
     const cart = useSelector(state => state.cart);
     // decontructure cart to get cartItems
     const {cartItems} = cart;

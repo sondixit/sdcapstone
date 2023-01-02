@@ -6,7 +6,10 @@ const mongoose = require('mongoose');
 const userRouter = require('./routes/userRouter');
 const productRouter = require('./routes/productRouter');
 const orderRouter = require('./routes/orderRouter');
+const pushRouter = require('./routes/messageRouter');
 const app = express();
+//const messaging = require('./messaging/firebaseinit');
+//console.log(messaging);
 
 //db connect 
 console.log(process.env.MONGODB_URI );
@@ -42,6 +45,7 @@ app.use(express.json());
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
+//app.use('/api/messaging', pushRouter);
 
 
 //Paypal client ID from .env file. send back to front end
@@ -62,7 +66,8 @@ if (process.env.NODE_ENV === 'production') {
 
 //error handling middleware
 app.use((err, req, res, next) => {
-    res.status(402).send({message: err.message});
+    console.log(req);
+    res.status(500).send({message: err.message});
 });
 
 //server 
