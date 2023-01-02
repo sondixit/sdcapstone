@@ -21,7 +21,7 @@ function requestPermission() {
 
 const app = initializeApp(config);
 
-const messaging = getMessaging(app);
+export const messaging = getMessaging(app);
 
 export const callMessaging = () => { getToken(messaging, {vapidKey: "BGyzrWOwGknjeAOyOJ0X38oXIsx5ZDuYrZGiTcqQo2PH_-umCoZAKay1hSCZa9Rq08LRugmQC2jIwNbzsGGHYCw"})
     .then((currentToken) => {
