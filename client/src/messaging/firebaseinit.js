@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getMessaging, getToken } from "firebase/messaging";
+import { getMessaging, getToken,onMessage } from "firebase/messaging";
 
 const config = {
     apiKey: "AIzaSyBUBSCgyFiYO3N2ifYLmtSznVjTrJ_BwZc",
@@ -39,3 +39,8 @@ export const callMessaging = () => { getToken(messaging, {vapidKey: "BGyzrWOwGkn
     // ...
   });
 }
+
+onMessage(messaging, (payload) => {
+    console.log("Message received. ", payload);
+    // ...
+  });
