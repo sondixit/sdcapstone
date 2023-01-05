@@ -17,6 +17,7 @@ import MenScreen from './screens/MenScreen';
 import WomenScreen from './screens/WomenScreen';
 import KidScreen from './screens/KidScreen';
 import AccessoriesScreen from './screens/AccessoriesScreen';
+import ProductListScreen from './screens/ProductListScreen';
 import { callMessaging } from './messaging/firebaseinit'; 
 
 function App () {
@@ -41,22 +42,38 @@ function App () {
                 <header className='row'>
                     <div>
                         <Link className='brand' to='/'>
-                            Zankoo
+                            Hexashop
                         </Link>
                     </div>
                     <div>
-                        <Link to='/men'>
-                            Men's
-                        </Link>
-                        <Link to='/women'>
-                            Women's
-                        </Link>
-                        <Link to='/kid'>
-                            Kids's
-                        </Link>
-                        <Link to='/accessories'>
-                            Accessories
-                        </Link>
+                        <div className='dropdown'>
+                                        <Link to="/productList">
+                                            Products 
+                                            <i className="fa fa-caret-down"></i>{ ' ' }
+                                        </Link> 
+                                        <ul className='dropdown-content'>
+                                            <li>
+                                                <Link to='/men'>
+                                                    Men's
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to='/women'>
+                                                    Women's
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to='/kid'>
+                                                    Kids's
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to='/accessories'>
+                                                Accessories
+                                                </Link>
+                                            </li>
+                                        </ul>
+                        </div>
                         <Link to='/cart'>
                             Cart
                             {
@@ -106,6 +123,7 @@ function App () {
                     <Route path='/women' component={WomenScreen} />
                     <Route path='/kid' component={KidScreen} />
                     <Route path='/accessories' component={AccessoriesScreen} />
+                    <Route path='/productList' component={ProductListScreen} />
                     <Route exact path='/' component={HomeScreen} />
                 </main>
                 <footer className='row center footercheck'>All right reserved</footer>
