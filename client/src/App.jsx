@@ -37,10 +37,10 @@ function App () {
 
     if(userInfo) {
         window.adobeDataLayer.push({
-            "event":"signInCTA",
+            "event":"pageLoaded",
             "pageInfo": {
-            "pageName": "Login Page", 
-            "pageType": "Login",
+            "pageName": "Home Page", 
+            "pageType": "Home",
             },
             "user": {
             "userId":userInfo.encryptedUserId
@@ -48,6 +48,14 @@ function App () {
             });
 
         console.log("UserId"+userInfo.encryptedUserId);
+    } else {
+        window.adobeDataLayer.push({
+            "event":"pageLoaded",
+            "pageInfo": {
+            "pageName": "Home Page", 
+            "pageType": "Home",
+            }
+            });
     }
 
     // console.log(userInfo);

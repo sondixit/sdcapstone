@@ -32,11 +32,34 @@ function CartScreen(props) {
     
     //delete cartItem action
     const removeFromCartHandler = (id) => {
+        window.adobeDataLayer.push({
+            "event":"removeCart",
+            "pageInfo": {
+            "pageName": "Cart Page", 
+            "pageType": "cart",
+            },
+            "user": {
+            "userId":userInfo.encryptedUserId
+            }
+            });
+
         dispatch(removeFromCart(id));
     };
 
     //After checkout btn is clicked, go to signin page and then shipping page
     const checkoutHandler = () => {
+
+        window.adobeDataLayer.push({
+            "event":"checkOutCart",
+            "pageInfo": {
+            "pageName": "Cart Page", 
+            "pageType": "cart",
+            },
+            "user": {
+            "userId":userInfo.encryptedUserId
+            }
+            });
+
         props.history.push('/signin?redirect=shipping');
     };
     

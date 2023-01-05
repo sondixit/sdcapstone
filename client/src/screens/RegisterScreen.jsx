@@ -38,6 +38,16 @@ function SigninScreen(props) {
     // if userInfo, redirect user on page load
     useEffect(() => {
         if(userInfo) {
+            window.adobeDataLayer.push({
+                "event":"registerCTA",
+                "pageInfo": {
+                "pageName": "Register Page", 
+                "pageType": "Register",
+                },
+                "user": {
+                "userId":userInfo.encryptedUserId
+                }
+                });    
             props.history.push(redirect);
         }
     }, [userInfo, redirect, props.history]);

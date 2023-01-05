@@ -17,9 +17,35 @@ function AccessoriesScreen() {
     //When page first load, fetch product data from backend 
     useEffect(() => {
         // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
-        dispatch(listCategoryProducts('Accessories'));
+        dispatch(listCategoryProducts("Accessories"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const userSignin = useSelector(state => state.userSignin);
+    const { userInfo } = userSignin;
+
+    if(userInfo) {
+        window.adobeDataLayer.push({
+            "event":"pageLoaded",
+            "pageInfo": {
+            "pageName": "Accessories Page", 
+            "pageType": "Product Category",
+            },
+            "user": {
+            "userId":userInfo.encryptedUserId
+            }
+            });
+
+        console.log("UserId"+userInfo.encryptedUserId);
+    } else {
+        window.adobeDataLayer.push({
+            "event":"pageLoaded",
+            "pageInfo": {
+                "pageName": "Accessories Page", 
+                "pageType": "Product Category",
+            }
+            });
+    }
 
     return (
         <div>

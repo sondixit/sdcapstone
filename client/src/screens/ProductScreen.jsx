@@ -10,6 +10,9 @@ import { detailsProduct } from '../actions/productActions';
 function ProductScreen (props) {
     // console.log(props);
 
+    const userSignin = useSelector(state => state.userSignin);
+    const { userInfo } = userSignin;
+
     const dispatch = useDispatch();
     //props.match.params is the url path /product/:id
     //props.match.params.id = id (1, 2 , 3 etc... )
@@ -32,6 +35,26 @@ function ProductScreen (props) {
    
     // direct to cart page when add to cart btn is clicked
     const addToCartHandler = () => {
+        if(userInfo){
+            window.adobeDataLayer.push({
+                "event":"addToCart",
+                "pageInfo": {
+                "pageName": "Product Page", 
+                "pageType": "product",
+                },
+                "user": {
+                "userId":userInfo.encryptedUserId
+                }
+                });
+        } else {
+            window.adobeDataLayer.push({
+                "event":"addToCart",
+                "pageInfo": {
+                "pageName": "Product Page", 
+                "pageType": "product",
+                }
+                });
+        }
         props.history.push(`/cart/${productId}?qty=${qty}`);
     };
 

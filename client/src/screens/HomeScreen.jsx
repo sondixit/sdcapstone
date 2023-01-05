@@ -22,6 +22,32 @@ function HomeScreen () {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const userSignin = useSelector(state => state.userSignin);
+    const { userInfo } = userSignin;
+
+    if(userInfo) {
+        window.adobeDataLayer.push({
+            "event":"pageLoaded",
+            "pageInfo": {
+            "pageName": "Home Page", 
+            "pageType": "Home",
+            },
+            "user": {
+            "userId":userInfo.encryptedUserId
+            }
+            });
+
+        console.log("UserId"+userInfo.encryptedUserId);
+    } else {
+        window.adobeDataLayer.push({
+            "event":"pageLoaded",
+            "pageInfo": {
+            "pageName": "Home Page", 
+            "pageType": "Home",
+            }
+            });
+    }
+
     return (
         <div>
             {
