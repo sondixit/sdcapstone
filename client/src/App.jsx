@@ -43,7 +43,7 @@ function App () {
             "pageType": "Login",
             },
             "user": {
-            "userId":"{userInfo.encryptedUserId}"
+            "userId":userInfo.encryptedUserId
             }
             });
 
