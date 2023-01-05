@@ -19,7 +19,12 @@ const userSchema = new mongoose.Schema(
             type: Boolean,
             required: true,
             default: false
-        }
+        },
+        encryptedEmail: {
+            type: String,
+            require: true,
+            unique: true
+        },
     }, 
     {
         timestamps: true

@@ -33,7 +33,7 @@ userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
                 email: user.email,
                 isAdmin: user.isAdmin,
                 token: generateToken(user),
-                encryptedUserId: bcrypt.hashSync(user.email,8)
+                encryptedUserId: user.encryptedEmail
             });
 
             return;
@@ -53,7 +53,8 @@ userRouter.post('/register', expressAsyncHandler(async ({body}, res) => {
     const user = new User({
         name: body.name,
         email: body.email,
-        password: bcrypt.hashSync(body.password, 8)
+        password: bcrypt.hashSync(body.password, 8),
+        encryptedEmail: bcrypt.hashSync(body.email,8)
     });
     // save new user in db
     const createdUser = await user.save();
@@ -64,6 +65,7 @@ userRouter.post('/register', expressAsyncHandler(async ({body}, res) => {
         name: createdUser.name,
         email: createdUser.email,
         isAdmin: createdUser.isAdmin,
+        encryptedEmail: createdUser.encryptedEmail,
         token: generateToken(createdUser)
     });
 })
@@ -82,6 +84,7 @@ userRouter.put('/profile', isAuth, expressAsyncHandler(async (req, res) => {
         if(req.body.password) {
             user.password = bcrypt.hashSync(req.body.password, 8);
         }
+        user.encryptedEmail = bcrypt.hashSync(user.email, 8);
 
         //save updated user info
         const updatedUser = await user.save();
@@ -91,6 +94,7 @@ userRouter.put('/profile', isAuth, expressAsyncHandler(async (req, res) => {
             name: updatedUser.name,
             email: updatedUser.email,
             isAdmin: updatedUser.isAdmin,
+            encryptedEmail: updatedUser.encryptedEmail,
             token: generateToken(updatedUser)
         });
     }
