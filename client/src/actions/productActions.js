@@ -31,7 +31,7 @@ export const listCategoryProducts = (category) => async (dispatch) => {
     });
 
     try{
-        const { data } = await axios.get('/api/products/'+category);
+        const { data } = await axios.get('/api/products/category/'+category);
         dispatch({ type: PRODUCT_LIST_CATEGORY_SUCCESS, payload: data});
     } catch(err) {
         dispatch({ type: PRODUCT_LIST_CATEGORY_FAIL, payload: err.message});
@@ -42,7 +42,7 @@ export const detailsProduct = (productId) => async (dispatch) => {
     dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
 
     try {
-        const { data } = await axios.get(`/api/products/${productId}`);
+        const { data } = await axios.get(`/api/products/details/${productId}`);
         dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data});
     } catch(error) {
         dispatch({ type: PRODUCT_DETAILS_FAIL, payload: error.response && error.response.data.message ? error.response.data.message : error.message});
