@@ -35,6 +35,21 @@ function App () {
         dispatch(signout());
     };
 
+    if(userInfo) {
+        window.adobeDataLayer.push({
+            "event":"signInCTA",
+            "pageInfo": {
+            "pageName": "Login Page", 
+            "pageType": "Login",
+            },
+            "user": {
+            "userId":"{userInfo.encryptedUserId}"
+            }
+            });
+
+        console.log("UserId"+userInfo.encryptedUserId);
+    }
+
     // console.log(userInfo);
     return (
         <BrowserRouter>

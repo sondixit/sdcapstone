@@ -32,7 +32,8 @@ userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
                 name: user.name,
                 email: user.email,
                 isAdmin: user.isAdmin,
-                token: generateToken(user)
+                token: generateToken(user),
+                encryptedUserId: bcrypt.hashSync(user.email,8)
             });
 
             return;

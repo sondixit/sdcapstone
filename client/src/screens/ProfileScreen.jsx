@@ -60,7 +60,7 @@ function ProfileScreen() {
                 onSubmit={submitHandler}
             >
                 <div>
-                    <h1>User Prodile</h1>
+                    <h1>User Profile</h1>
                 </div>
                 {
                     loading ? <LoadingBox />
