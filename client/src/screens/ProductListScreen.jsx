@@ -3,7 +3,7 @@ import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { useSelector, useDispatch } from 'react-redux';
-import { listCategoryProducts } from '../actions/productActions';
+import { listProducts } from '../actions/productActions';
 
 function ProductListScreen() {
     //import useDispatch from react-redux
