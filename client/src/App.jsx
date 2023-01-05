@@ -13,6 +13,10 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import OrderHisotyScreen from './screens/OrderHisotyScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import MenScreen from './screens/MenScreen';
+import WomenScreen from './screens/WomenScreen';
+import KidScreen from './screens/KidScreen';
+import AccessoriesScreen from './screens/AccessoriesScreen';
 import { callMessaging } from './messaging/firebaseinit'; 
 
 function App () {
@@ -41,6 +45,18 @@ function App () {
                         </Link>
                     </div>
                     <div>
+                        <Link to='/men'>
+                            Men's
+                        </Link>
+                        <Link to='/women'>
+                            Women's
+                        </Link>
+                        <Link to='/kid'>
+                            Kids's
+                        </Link>
+                        <Link to='/accessories'>
+                            Accessories
+                        </Link>
                         <Link to='/cart'>
                             Cart
                             {
@@ -73,7 +89,6 @@ function App () {
                                 )
                                 : <Link to='/signin'>Sign In</Link>
                         }
-                      
                     </div>
                 </header>
                 <main>                  
@@ -87,9 +102,13 @@ function App () {
                     <Route path='/order/:id' component={OrderScreen} />
                     <Route path='/orderhistory' component={OrderHisotyScreen} />
                     <Route path='/profile' component={ProfileScreen} />
+                    <Route path='/men' component={MenScreen} />
+                    <Route path='/women' component={WomenScreen} />
+                    <Route path='/kid' component={KidScreen} />
+                    <Route path='/accessories' component={AccessoriesScreen} />
                     <Route exact path='/' component={HomeScreen} />
                 </main>
-                <footer className='row center'>All right reserved</footer>
+                <footer className='row center footercheck'>All right reserved</footer>
             </div>
         </BrowserRouter>
     );

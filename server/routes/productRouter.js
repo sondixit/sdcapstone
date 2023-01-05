@@ -22,6 +22,11 @@ productRouter.get('/', expressAsyncHandler(async (req, res) => {
     res.send( products );
 }));
 
+productRouter.get('/:category', expressAsyncHandler(async (req, res) => {
+    const products = await Product.find({category:req.params.category});
+    res.send( products );
+}));
+
 // temp product api/product route 
 productRouter.get('/:id', expressAsyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id);
