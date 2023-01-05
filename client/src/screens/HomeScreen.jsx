@@ -4,6 +4,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { useSelector, useDispatch } from 'react-redux';
 import { listProducts } from '../actions/productActions';
+import { Link } from 'react-router-dom';
 
 function HomeScreen () {
     //import useDispatch from react-redux
@@ -37,7 +38,9 @@ function HomeScreen () {
                                 <h4>We Are Hexashop</h4>
                                 <span>Awesome, clean &amp; creative HTML5 Template</span>
                                 <div className="main-border-button">
-                                    <a href="#">Purchase Now!</a>
+                                    <Link to='/productList'>
+                                        Purchase Now!
+                                    </Link>
                                 </div>
                             </div>
                             <img src="/images/left-banner-image.jpg" alt="" />
@@ -59,7 +62,9 @@ function HomeScreen () {
                                                 <h4>Women</h4>
                                                 <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
                                                 <div className="main-border-button">
-                                                    <a href="/women">Discover More</a>
+                                                    <Link to='/women'>
+                                                        Discover More
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -79,7 +84,9 @@ function HomeScreen () {
                                                 <h4>Men</h4>
                                                 <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
                                                 <div className="main-border-button">
-                                                    <a href="/men">Discover More</a>
+                                                    <Link to='/men'>
+                                                        Discover More
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +106,9 @@ function HomeScreen () {
                                                 <h4>Kids</h4>
                                                 <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
                                                 <div className="main-border-button">
-                                                    <a href="/kid">Discover More</a>
+                                                    <Link to='/kid'>
+                                                        Discover More
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -119,7 +128,9 @@ function HomeScreen () {
                                                 <h4>Accessories</h4>
                                                 <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
                                                 <div className="main-border-button">
-                                                    <a href="/accessories">Discover More</a>
+                                                    <Link to='/accessories'>
+                                                        Discover More
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>

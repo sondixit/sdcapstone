@@ -5,7 +5,7 @@ import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_PAYMENT_METHOD, CART_SAVE_SH
 // disptach and getState are redux-thunk functions to get access to redux store
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
     // data (product) is deconstructed from axios return data
-    const { data } = await axios.get(`/api/products/${productId}`);
+    const { data } = await axios.get(`/api/products/details/${productId}`);
 
     //using product data to dispatch 
     dispatch({
