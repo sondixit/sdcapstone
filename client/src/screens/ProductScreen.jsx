@@ -34,6 +34,7 @@ function ProductScreen (props) {
 
 
     if(userInfo) {
+        if(product) {
         window.adobeDataLayer.push({
             "event":"prodView",
             "pageInfo": {
@@ -56,7 +57,9 @@ function ProductScreen (props) {
             });
 
         console.log("UserId"+userInfo.encryptedUserId);
+    }
     } else {
+        if(product) {
         window.adobeDataLayer.push({
             "event":"prodView",
             "pageInfo": {
@@ -76,6 +79,7 @@ function ProductScreen (props) {
                 "price": product.price
             }]
             });
+        }
     }
    
     // direct to cart page when add to cart btn is clicked
