@@ -27,6 +27,11 @@ function ProductScreen (props) {
     const { product, loading, error } = productDetails;
 
     // console.log(productDetails);
+    useEffect(() => {
+        dispatch(detailsProduct(productId));
+    
+    }, [dispatch, productId]); 
+
 
     if(userInfo) {
         window.adobeDataLayer.push({
@@ -72,11 +77,6 @@ function ProductScreen (props) {
             }]
             });
     }
-
-    useEffect(() => {
-        dispatch(detailsProduct(productId));
-    
-    }, [dispatch, productId]); 
    
     // direct to cart page when add to cart btn is clicked
     const addToCartHandler = () => {
