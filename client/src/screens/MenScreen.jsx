@@ -28,11 +28,17 @@ function MenScreen() {
         window.adobeDataLayer.push({
             "event":"pageLoaded",
             "pageInfo": {
-            "pageName": "Mens Page", 
-            "pageType": "Product Category",
+                "pageName": "Men-Landing Page", 
+                "pageType": "Landing Page",
+                "category": "Men"
             },
             "user": {
-            "userId":userInfo.encryptedUserId
+                "userId":userInfo.encryptedUserId,
+                "loginStatus":"true"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
             }
             });
 
@@ -41,8 +47,16 @@ function MenScreen() {
         window.adobeDataLayer.push({
             "event":"pageLoaded",
             "pageInfo": {
-                "pageName": "Mens Page", 
-                "pageType": "Product Category",
+                "pageName": "Men-Landing Page", 
+                "pageType": "Landing Page",
+                "category": "Men"
+            }, 
+            "user": {
+                "loginStatus":"false"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
             }
             });
     }

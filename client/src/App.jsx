@@ -35,28 +35,6 @@ function App () {
         dispatch(signout());
     };
 
-    if(userInfo) {
-        window.adobeDataLayer.push({
-            "event":"pageLoaded",
-            "pageInfo": {
-            "pageName": "Home Page", 
-            "pageType": "Home",
-            },
-            "user": {
-            "userId":userInfo.encryptedUserId
-            }
-            });
-
-        console.log("UserId"+userInfo.encryptedUserId);
-    } else {
-        window.adobeDataLayer.push({
-            "event":"pageLoaded",
-            "pageInfo": {
-            "pageName": "Home Page", 
-            "pageType": "Home",
-            }
-            });
-    }
 
     // console.log(userInfo);
     return (

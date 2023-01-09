@@ -28,11 +28,17 @@ function KidScreen() {
         window.adobeDataLayer.push({
             "event":"pageLoaded",
             "pageInfo": {
-            "pageName": "Kids Page", 
-            "pageType": "Product Category",
+                "pageName": "Kids-Landing Page", 
+                "pageType": "Landing Page",
+                "category": "Kid"
             },
             "user": {
-            "userId":userInfo.encryptedUserId
+                "userId":userInfo.encryptedUserId,
+                "loginStatus":"true"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
             }
             });
 
@@ -41,8 +47,16 @@ function KidScreen() {
         window.adobeDataLayer.push({
             "event":"pageLoaded",
             "pageInfo": {
-                "pageName": "Kids Page", 
-                "pageType": "Product Category",
+                "pageName": "Kids-Landing Page", 
+                "pageType": "Landing Page",
+                "category": "Kid"
+            }, 
+            "user": {
+                "loginStatus":"false"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
             }
             });
     }

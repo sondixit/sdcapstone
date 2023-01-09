@@ -29,11 +29,16 @@ function HomeScreen () {
         window.adobeDataLayer.push({
             "event":"pageLoaded",
             "pageInfo": {
-            "pageName": "Home Page", 
-            "pageType": "Home",
+                "pageName": "Home Page", 
+                "pageType": "Home",
             },
             "user": {
-            "userId":userInfo.encryptedUserId
+                "userId":userInfo.encryptedUserId,
+                "loginStatus":"true"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
             }
             });
 
@@ -44,6 +49,13 @@ function HomeScreen () {
             "pageInfo": {
             "pageName": "Home Page", 
             "pageType": "Home",
+            },
+            "user": {
+                "loginStatus":"false"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
             }
             });
     }

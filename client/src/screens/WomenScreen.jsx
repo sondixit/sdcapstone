@@ -28,11 +28,17 @@ function WomenScreen() {
         window.adobeDataLayer.push({
             "event":"pageLoaded",
             "pageInfo": {
-            "pageName": "Womens Page", 
-            "pageType": "Product Category",
+                "pageName": "Women-Landing Page", 
+                "pageType": "Landing Page",
+                "category": "Women"
             },
             "user": {
-            "userId":userInfo.encryptedUserId
+                "userId":userInfo.encryptedUserId,
+                "loginStatus":"true"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
             }
             });
 
@@ -41,8 +47,16 @@ function WomenScreen() {
         window.adobeDataLayer.push({
             "event":"pageLoaded",
             "pageInfo": {
-                "pageName": "Womens Page", 
-                "pageType": "Product Category",
+                "pageName": "Women-Landing Page", 
+                "pageType": "Landing Page",
+                "category": "Women"
+            }, 
+            "user": {
+                "loginStatus":"false"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
             }
             });
     }

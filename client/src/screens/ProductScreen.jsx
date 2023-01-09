@@ -28,6 +28,51 @@ function ProductScreen (props) {
 
     // console.log(productDetails);
 
+    if(userInfo) {
+        window.adobeDataLayer.push({
+            "event":"prodView",
+            "pageInfo": {
+                "pageName": product.category+ " Product Page", 
+                "pageType": "Landing Page",
+                "category": product.category
+            },
+            "user": {
+                "userId":userInfo.encryptedUserId,
+                "loginStatus":"true"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
+            },
+            "product": [{
+                "name": product.name,
+                "price": product.price
+            }]
+            });
+
+        console.log("UserId"+userInfo.encryptedUserId);
+    } else {
+        window.adobeDataLayer.push({
+            "event":"prodView",
+            "pageInfo": {
+                "pageName": product.category+ " Product Page", 
+                "pageType": "Landing Page",
+                "category": product.category
+            },
+            "user": {
+                "loginStatus":"false"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
+            },
+            "product": [{
+                "name": product.name,
+                "price": product.price
+            }]
+            });
+    }
+
     useEffect(() => {
         dispatch(detailsProduct(productId));
     
@@ -37,22 +82,46 @@ function ProductScreen (props) {
     const addToCartHandler = () => {
         if(userInfo){
             window.adobeDataLayer.push({
-                "event":"addToCart",
+                "event":"scAdd",
                 "pageInfo": {
-                "pageName": "Product Page", 
-                "pageType": "product",
+                    "pageName": product.category+ " Product Page", 
+                    "pageType": "Landing Page",
+                    "category": product.category
                 },
                 "user": {
-                "userId":userInfo.encryptedUserId
-                }
+                    "userId":userInfo.encryptedUserId,
+                    "loginStatus":"true"
+                },
+                "attributes": {
+                    "country": "Middle-east",
+                    "language": "en-US"
+                },
+                "product": [{
+                    "name": product.name,
+                    "price": product.price,
+                    "qty": qty
+                }]
                 });
         } else {
             window.adobeDataLayer.push({
-                "event":"addToCart",
+                "event":"scAdd",
                 "pageInfo": {
-                "pageName": "Product Page", 
-                "pageType": "product",
-                }
+                    "pageName": product.category+ " Product Page", 
+                    "pageType": "Landing Page",
+                    "category": product.category
+                },
+                "user": {
+                    "loginStatus":"false"
+                },
+                "attributes": {
+                    "country": "Middle-east",
+                    "language": "en-US"
+                },
+                "product": [{
+                    "name": product.name,
+                    "price": product.price,
+                    "qty": qty
+                }]
                 });
         }
         props.history.push(`/cart/${productId}?qty=${qty}`);

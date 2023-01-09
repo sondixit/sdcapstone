@@ -49,15 +49,27 @@ function CartScreen(props) {
     //After checkout btn is clicked, go to signin page and then shipping page
     const checkoutHandler = () => {
 
+        let productitems = [];
+
+        cartItems.map((cartItem) => {
+            productitems.push({"name":cartItem.name,"sku":"","color":"","brand":"","qty":cartItem.qty,"price":cartItem.price});
+        })
         window.adobeDataLayer.push({
-            "event":"checkOutCart",
+            "event":"scCheckOut",
             "pageInfo": {
             "pageName": "Cart Page", 
             "pageType": "cart",
+            "category": "Cart"
             },
             "user": {
-            "userId":userInfo.encryptedUserId
-            }
+            "userId":userInfo.encryptedUserId,
+            "loginStatus": "true"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
+            },
+            "product": productitems
             });
 
         props.history.push('/signin?redirect=shipping');
