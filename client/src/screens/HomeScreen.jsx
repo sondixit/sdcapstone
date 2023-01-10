@@ -15,10 +15,13 @@ function HomeScreen () {
     const productList = useSelector(state => state.productList);
     const { products, loading, error } = productList;
 
+    console.log('Home Screen');
+
     //When page first load, fetch product data from backend 
     useEffect(() => {
         // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
         dispatch(listProducts());
+        console.log('Inside Home Screen');
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
