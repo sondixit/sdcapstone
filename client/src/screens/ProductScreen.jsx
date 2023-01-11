@@ -29,33 +29,35 @@ function ProductScreen (props) {
     // console.log(productDetails);
     useEffect(() => {
         dispatch(detailsProduct(productId));
+    
+    }, [dispatch, productId]); 
+
+    useEffect(() => {
         if(userInfo) {
             if(product) {
             window.adobeDataLayer.push({
-                "event":"prodView",
-                "pageInfo": {
-                    "pageName": product.category+ " Product Page", 
-                    "pageType": "Landing Page",
-                    "category": product.category
-                },
-                "user": {
-                    "userId":userInfo.encryptedUserId,
-                    "loginStatus":"true"
-                },
-                "attributes": {
-                    "country": "Middle-east",
-                    "language": "en-US"
-                },
-                "product": [{
-                    "name": product.name,
-                    "price": product.price
-                }]
-                });
-    
-            console.log("UserId"+userInfo.encryptedUserId);
-        }
-        } else {
-            if(product) {
+            "event":"prodView",
+            "pageInfo": {
+                "pageName": product.category+ " Product Page", 
+                "pageType": "Landing Page",
+                "category": product.category
+            },
+            "user": {
+                "userId":userInfo.encryptedUserId,
+                "loginStatus":"true"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
+            },
+            "product": [{
+                "name": product.name,
+                "price": product.price
+            }]
+            });
+    }
+    } else {
+        if(product) {
             window.adobeDataLayer.push({
                 "event":"prodView",
                 "pageInfo": {
@@ -75,12 +77,9 @@ function ProductScreen (props) {
                     "price": product.price
                 }]
                 });
-            }
         }
-    }, [dispatch, productId]); 
-
-
-    
+    }
+},[product]);
    
     // direct to cart page when add to cart btn is clicked
     const addToCartHandler = () => {

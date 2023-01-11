@@ -36,6 +36,7 @@ function HomeScreen () {
             "pageInfo": {
                 "pageName": "Home Page", 
                 "pageType": "Home",
+                "category": ""
             },
             "user": {
                 "userId":userInfo.encryptedUserId,
@@ -52,6 +53,7 @@ function HomeScreen () {
             "pageInfo": {
             "pageName": "Home Page", 
             "pageType": "Home",
+            "category": ""
             },
             "user": {
                 "loginStatus":"false"
