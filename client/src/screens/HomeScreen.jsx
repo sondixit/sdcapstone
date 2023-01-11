@@ -25,38 +25,6 @@ function HomeScreen () {
         // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
         dispatch(listProducts());
         window.adobeDataLayer = window.adobeDataLayer || [];
-    if(userInfo) {
-        window.adobeDataLayer.push({
-            "event":"pageLoaded",
-            "pageInfo": {
-                "pageName": "Home Page", 
-                "pageType": "Home",
-            },
-            "user": {
-                "userId":userInfo.encryptedUserId,
-                "loginStatus":"true"
-            },
-            "attributes": {
-                "country": "Middle-east",
-                "language": "en-US"
-            }
-            });
-    } else {
-        window.adobeDataLayer.push({
-            "event":"pageLoaded",
-            "pageInfo": {
-            "pageName": "Home Page", 
-            "pageType": "Home",
-            },
-            "user": {
-                "loginStatus":"false"
-            },
-            "attributes": {
-                "country": "Middle-east",
-                "language": "en-US"
-            }
-            });
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
