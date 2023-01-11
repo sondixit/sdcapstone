@@ -21,7 +21,11 @@ function WomenScreen() {
     useEffect(() => {
         // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
         dispatch(listCategoryProducts("Women"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
+    useEffect(() => {
+        // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
         if(userInfo) {
             window.adobeDataLayer.push({
                 "event":"pageLoaded",
@@ -59,8 +63,7 @@ function WomenScreen() {
                 });
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
+    }, [userInfo]);
     
 
     return (

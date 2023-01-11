@@ -22,6 +22,12 @@ function AccessoriesScreen() {
         // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
         dispatch(listCategoryProducts("Accessories"));
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
+        
         if(userInfo) {
             window.adobeDataLayer.push({
                 "event":"pageLoaded",
@@ -57,32 +63,7 @@ function AccessoriesScreen() {
                 });
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    
-
-    if(userInfo) {
-        window.adobeDataLayer.push({
-            "event":"pageLoaded",
-            "pageInfo": {
-            "pageName": "Accessories Page", 
-            "pageType": "Product Category",
-            },
-            "user": {
-            "userId":userInfo.encryptedUserId
-            }
-            });
-
-        console.log("UserId"+userInfo.encryptedUserId);
-    } else {
-        window.adobeDataLayer.push({
-            "event":"pageLoaded",
-            "pageInfo": {
-                "pageName": "Accessories Page", 
-                "pageType": "Product Category",
-            }
-            });
-    }
+    }, [userInfo]);
 
     return (
         <div>

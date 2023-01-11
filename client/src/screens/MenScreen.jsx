@@ -61,6 +61,47 @@ function MenScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    useEffect(() => {
+        // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
+         if(userInfo) {
+            window.adobeDataLayer.push({
+                "event":"pageLoaded",
+                "pageInfo": {
+                    "pageName": "Men-Landing Page", 
+                    "pageType": "Landing Page",
+                    "category": "Men"
+                },
+                "user": {
+                    "userId":userInfo.encryptedUserId,
+                    "loginStatus":"true"
+                },
+                "attributes": {
+                    "country": "Middle-east",
+                    "language": "en-US"
+                }
+                });
+    
+            console.log("UserId"+userInfo.encryptedUserId);
+        } else {
+            window.adobeDataLayer.push({
+                "event":"pageLoaded",
+                "pageInfo": {
+                    "pageName": "Men-Landing Page", 
+                    "pageType": "Landing Page",
+                    "category": "Men"
+                }, 
+                "user": {
+                    "loginStatus":"false"
+                },
+                "attributes": {
+                    "country": "Middle-east",
+                    "language": "en-US"
+                }
+                });
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userInfo]);
+
     
 
     return (

@@ -23,45 +23,47 @@ function KidScreen() {
         // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
         dispatch(listCategoryProducts("Kid"));
 
-        if(userInfo) {
-            window.adobeDataLayer.push({
-                "event":"pageLoaded",
-                "pageInfo": {
-                    "pageName": "Kids-Landing Page", 
-                    "pageType": "Landing Page",
-                    "category": "Kid"
-                },
-                "user": {
-                    "userId":userInfo.encryptedUserId,
-                    "loginStatus":"true"
-                },
-                "attributes": {
-                    "country": "Middle-east",
-                    "language": "en-US"
-                }
-                });
-    
-            console.log("UserId"+userInfo.encryptedUserId);
-        } else {
-            window.adobeDataLayer.push({
-                "event":"pageLoaded",
-                "pageInfo": {
-                    "pageName": "Kids-Landing Page", 
-                    "pageType": "Landing Page",
-                    "category": "Kid"
-                }, 
-                "user": {
-                    "loginStatus":"false"
-                },
-                "attributes": {
-                    "country": "Middle-east",
-                    "language": "en-US"
-                }
-                });
-        }
-        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+    if(userInfo) {
+        window.adobeDataLayer.push({
+            "event":"pageLoaded",
+            "pageInfo": {
+                "pageName": "Kids-Landing Page", 
+                "pageType": "Landing Page",
+                "category": "Kid"
+            },
+            "user": {
+                "userId":userInfo.encryptedUserId,
+                "loginStatus":"true"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
+            }
+            });
+
+        console.log("UserId"+userInfo.encryptedUserId);
+    } else {
+        window.adobeDataLayer.push({
+            "event":"pageLoaded",
+            "pageInfo": {
+                "pageName": "Kids-Landing Page", 
+                "pageType": "Landing Page",
+                "category": "Kid"
+            }, 
+            "user": {
+                "loginStatus":"false"
+            },
+            "attributes": {
+                "country": "Middle-east",
+                "language": "en-US"
+            }
+            });
+    }
+},[userInfo]);
 
 
     return (
