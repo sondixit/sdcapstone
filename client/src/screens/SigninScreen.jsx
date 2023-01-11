@@ -33,13 +33,18 @@ function SigninScreen(props) {
             window.adobeDataLayer.push({
                 "event":"signInCTA",
                 "pageInfo": {
-                "pageName": "Login Page", 
-                "pageType": "Login",
+                    "pageName": "Login Page", 
+                    "pageType": "Login",
                 },
                 "user": {
-                "userId":userInfo.encryptedUserId
+                    "userId":userInfo.encryptedUserId,
+                    "loginStatus":"true"
+                },
+                "attributes": {
+                    "country": "Middle-east",
+                    "language": "en-US"
                 }
-                });    
+                });  
             props.history.push(redirect);
         }
     }, [userInfo, redirect, props.history]);

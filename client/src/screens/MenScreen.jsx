@@ -14,52 +14,54 @@ function MenScreen() {
     const productList = useSelector(state => state.productListCategory);
     const { products, loading, error } = productList;
 
+    const userSignin = useSelector(state => state.userSignin);
+    const { userInfo } = userSignin;
+
     //When page first load, fetch product data from backend 
     useEffect(() => {
         // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
         dispatch(listCategoryProducts("Men"));
+
+        if(userInfo) {
+            window.adobeDataLayer.push({
+                "event":"pageLoaded",
+                "pageInfo": {
+                    "pageName": "Men-Landing Page", 
+                    "pageType": "Landing Page",
+                    "category": "Men"
+                },
+                "user": {
+                    "userId":userInfo.encryptedUserId,
+                    "loginStatus":"true"
+                },
+                "attributes": {
+                    "country": "Middle-east",
+                    "language": "en-US"
+                }
+                });
+    
+            console.log("UserId"+userInfo.encryptedUserId);
+        } else {
+            window.adobeDataLayer.push({
+                "event":"pageLoaded",
+                "pageInfo": {
+                    "pageName": "Men-Landing Page", 
+                    "pageType": "Landing Page",
+                    "category": "Men"
+                }, 
+                "user": {
+                    "loginStatus":"false"
+                },
+                "attributes": {
+                    "country": "Middle-east",
+                    "language": "en-US"
+                }
+                });
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const userSignin = useSelector(state => state.userSignin);
-    const { userInfo } = userSignin;
-
-    if(userInfo) {
-        window.adobeDataLayer.push({
-            "event":"pageLoaded",
-            "pageInfo": {
-                "pageName": "Men-Landing Page", 
-                "pageType": "Landing Page",
-                "category": "Men"
-            },
-            "user": {
-                "userId":userInfo.encryptedUserId,
-                "loginStatus":"true"
-            },
-            "attributes": {
-                "country": "Middle-east",
-                "language": "en-US"
-            }
-            });
-
-        console.log("UserId"+userInfo.encryptedUserId);
-    } else {
-        window.adobeDataLayer.push({
-            "event":"pageLoaded",
-            "pageInfo": {
-                "pageName": "Men-Landing Page", 
-                "pageType": "Landing Page",
-                "category": "Men"
-            }, 
-            "user": {
-                "loginStatus":"false"
-            },
-            "attributes": {
-                "country": "Middle-east",
-                "language": "en-US"
-            }
-            });
-    }
+    
 
     return (
         <div>

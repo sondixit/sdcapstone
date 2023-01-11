@@ -14,52 +14,55 @@ function KidScreen() {
     const productList = useSelector(state => state.productListCategory);
     const { products, loading, error } = productList;
 
-    //When page first load, fetch product data from backend 
-    useEffect(() => {
-        // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
-        dispatch(listCategoryProducts("Kid"));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     const userSignin = useSelector(state => state.userSignin);
     const { userInfo } = userSignin;
 
-    if(userInfo) {
-        window.adobeDataLayer.push({
-            "event":"pageLoaded",
-            "pageInfo": {
-                "pageName": "Kids-Landing Page", 
-                "pageType": "Landing Page",
-                "category": "Kid"
-            },
-            "user": {
-                "userId":userInfo.encryptedUserId,
-                "loginStatus":"true"
-            },
-            "attributes": {
-                "country": "Middle-east",
-                "language": "en-US"
-            }
-            });
+    //When page first load, fetch product data from backend 
+    useEffect(() => {
+        // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
+        dispatch(listCategoryProducts("Kid"));
 
-        console.log("UserId"+userInfo.encryptedUserId);
-    } else {
-        window.adobeDataLayer.push({
-            "event":"pageLoaded",
-            "pageInfo": {
-                "pageName": "Kids-Landing Page", 
-                "pageType": "Landing Page",
-                "category": "Kid"
-            }, 
-            "user": {
-                "loginStatus":"false"
-            },
-            "attributes": {
-                "country": "Middle-east",
-                "language": "en-US"
-            }
-            });
-    }
+        if(userInfo) {
+            window.adobeDataLayer.push({
+                "event":"pageLoaded",
+                "pageInfo": {
+                    "pageName": "Kids-Landing Page", 
+                    "pageType": "Landing Page",
+                    "category": "Kid"
+                },
+                "user": {
+                    "userId":userInfo.encryptedUserId,
+                    "loginStatus":"true"
+                },
+                "attributes": {
+                    "country": "Middle-east",
+                    "language": "en-US"
+                }
+                });
+    
+            console.log("UserId"+userInfo.encryptedUserId);
+        } else {
+            window.adobeDataLayer.push({
+                "event":"pageLoaded",
+                "pageInfo": {
+                    "pageName": "Kids-Landing Page", 
+                    "pageType": "Landing Page",
+                    "category": "Kid"
+                }, 
+                "user": {
+                    "loginStatus":"false"
+                },
+                "attributes": {
+                    "country": "Middle-east",
+                    "language": "en-US"
+                }
+                });
+        }
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
 
     return (
         <div>

@@ -17,17 +17,14 @@ function HomeScreen () {
 
     console.log('Home Screen');
 
+    const userSignin = useSelector(state => state.userSignin);
+    const { userInfo } = userSignin;
+
     //When page first load, fetch product data from backend 
     useEffect(() => {
         // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function 
         dispatch(listProducts());
-        console.log('Inside Home Screen');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    const userSignin = useSelector(state => state.userSignin);
-    const { userInfo } = userSignin;
-
+        
     if(userInfo) {
         window.adobeDataLayer.push({
             "event":"pageLoaded",
@@ -44,8 +41,6 @@ function HomeScreen () {
                 "language": "en-US"
             }
             });
-
-        console.log("UserId"+userInfo.encryptedUserId);
     } else {
         window.adobeDataLayer.push({
             "event":"pageLoaded",
@@ -62,6 +57,8 @@ function HomeScreen () {
             }
             });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div>
