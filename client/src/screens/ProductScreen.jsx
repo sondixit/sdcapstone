@@ -52,7 +52,8 @@ function ProductScreen (props) {
             },
             "product": [{
                 "name": product.name,
-                "price": product.price
+                "price": product.price,
+                "qty": qty
             }]
             });
     }
@@ -74,7 +75,8 @@ function ProductScreen (props) {
                 },
                 "product": [{
                     "name": product.name,
-                    "price": product.price
+                    "price": product.price,
+                    "qty": qty
                 }]
                 });
         }
