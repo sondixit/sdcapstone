@@ -25,6 +25,9 @@
       "/node_modules"
     ]
   },
+   "engines": {
+    "node": ">=14 <15"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "concurrently": "^5.3.0",
